@@ -1,0 +1,50 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Code Quality
+
+on: 
+  pull_request:
+    branches: [main]
+  # push:
+  #   branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install flake8
+    - name: Lint with flake8
+      run: |
+        flake8 ./triplea/ --count --no-show-source --statistics
+        flake8 ./triplea/  --count --exit-zero  --max-complexity=20 --max-line-length=90 --no-show-source  --statistics
+    - name: Fail if there are linting errors
+      if: ${{ failure() }}
+      run: exit 2
+
+    # - name: Fetch action
+    #   id: pl
+    #   uses: Rishabh510/Path-lister-action@master
+    #   with:
+    #     path: "./triplea/"
+    #     type: ".py"
+
+    # - name: Output results
+    #   run: |
+    #     echo "Found ${{ steps.pl.outputs.path_count }} file(s) with this extension:"
+    #     for i in ${{ steps.pl.outputs.paths }}; do
+    #     echo $i
+    #     done
