@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 
 
 ### Improvements
+- Add topic extract with three method textrank, topicrank, positionalrank
 - Add `CoCalculator` Class for co-occurrence topic & keyword
 - Add 5 Step to export dataset
 

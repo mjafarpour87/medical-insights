@@ -19,33 +19,33 @@ def fx_filter(article:Article):
     # Finally
     return False
 
-def harmonization_string_field(f):
-    if isinstance(f,str):
-        output = []
-        if f.__contains__(','):
-            list_f = f.split(',')
-            for i in list_f:
-                output.append(safe_csv(i.strip()))
-        elif f.__contains__(' or '):
-            list_f = f.split(' or ')
-            for i in list_f:
-                output.append(safe_csv(i.strip()))
-        elif f.__contains__(' and '):
-            list_f = f.split(' and ')
-            for i in list_f:
-                output.append(safe_csv(i.strip()))
-        else:        
-            output = [safe_csv(f)]
-    elif isinstance(f,list):
-        output = f
-    elif f is None:
-        output = None
-    else:
-        # print()
-        # print(f"in harmonization_string_field - {f} with type {type(f)} is unhandel.")
-        output = ['Can not parse.']
+# def harmonization_string_field(f):
+#     if isinstance(f,str):
+#         output = []
+#         if f.__contains__(','):
+#             list_f = f.split(',')
+#             for i in list_f:
+#                 output.append(safe_csv(i.strip()))
+#         elif f.__contains__(' or '):
+#             list_f = f.split(' or ')
+#             for i in list_f:
+#                 output.append(safe_csv(i.strip()))
+#         elif f.__contains__(' and '):
+#             list_f = f.split(' and ')
+#             for i in list_f:
+#                 output.append(safe_csv(i.strip()))
+#         else:        
+#             output = [safe_csv(f)]
+#     elif isinstance(f,list):
+#         output = f
+#     elif f is None:
+#         output = None
+#     else:
+#         # print()
+#         # print(f"in harmonization_string_field - {f} with type {type(f)} is unhandel.")
+#         output = ['Can not parse.']
 
-    return output
+#     return output
 
 def fx_transform(article:Article):
     # convert article info into unified format
@@ -71,11 +71,11 @@ def fx_transform(article:Article):
     # # General one to many info of article
     # output['authors'] = ainfo["authors"]
     
-    # list_keywords = []
-    # if ainfo["keywords"] is not None:
-    #     for k in ainfo["keywords"]:
-    #         list_keywords.append(safe_csv(k.Text))
-    # output['keywords'] = list_keywords
+    list_keywords = []
+    if ainfo["keywords"] is not None:
+        for k in ainfo["keywords"]:
+            list_keywords.append(safe_csv(k.Text))
+    output['keywords'] = list_keywords
 
     list_topic = []
     if ainfo["topics"] is not None:
