@@ -30,7 +30,15 @@ class CoCalculator:
 
     _topic_blacklist = [
         "=",
-        "+"
+        "+",
+        "patients",
+        "breast cancer",
+        "breast",
+        "treatment",
+        "cancer",
+        "women",
+        "therapy",
+        "breast cancer patients"
     ]
 
 
@@ -40,6 +48,15 @@ class CoCalculator:
 
     _keyword_blacklist = [
         "test1",
+        "breast neoplasms",
+        "humans",
+        "female",
+        "male",
+        "animals",
+        "mice",
+        "adult",
+        "aged",
+        "middle aged",
     ]
 
 #endregion    
@@ -66,18 +83,38 @@ class CoCalculator:
                 return True
         return False
 
+
+    def _emmanuel(self,d: list) -> list:
+        """Base on [this](https://stackoverflow.com/questions/9427163/remove-duplicate-dict-in-list-in-python)
+
+        Args:
+            d (list): _description_
+
+        Returns:
+            list: _description_
+        """
+        return [i for n, i in enumerate(d) if i not in d[n + 1 :]]
+
     def _normalize_topics(self,topics):
         new_topics = []
         topics = list(dict.fromkeys(topics))
         for t in topics:
             t = str.lower(t)
-            ts = str.split(t," ")
-            for topic in ts: # Delete like '='
-                if len(topic) < 2:
-                    pass
-                else:
-                    new_topics.append(topic)
-        return new_topics
+            # # If you can split
+            # ts = str.split(t," ")
+            # for topic in ts: # Delete like '='
+            #     if len(topic) < 4:
+            #         pass
+            #     else:
+            #         new_topics.append(topic)
+
+            # for total
+            if len(t) < 2:
+                pass
+            else:
+                new_topics.append(t)
+
+        return self._emmanuel(new_topics)
 
     def _normalize_keyword(self, keyword_text:str):
         if keyword_text == "":
@@ -143,8 +180,8 @@ class CoCalculator:
             if self._topic_in_blacklist(keyword1) or self._topic_in_blacklist(keyword2):
                 pass
             else:
-                keyword1 = self._normalize_topic(keyword1)
-                keyword2 = self._normalize_topic(keyword2)
+                # keyword1 = self._normalize_topic(keyword1)
+                # keyword2 = self._normalize_topic(keyword2)
                 if link_weight_limit == 0: # unlimited
                     G.add_edge(keyword1, keyword2, weight=count)
                 else:
