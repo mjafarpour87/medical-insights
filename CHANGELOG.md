@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 
 
 ### Improvements
+- Change structure And step
 - Add `step11_topic_extract_with_llm`
 - Add VOS Viewer Export
 - Add topic extract with three method textrank, topicrank, positionalrank

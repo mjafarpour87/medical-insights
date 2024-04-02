@@ -162,4 +162,4 @@ cython_debug/
 
 # Ignore my output file
 # output/vos_*.json
-output/*
+# output/*
