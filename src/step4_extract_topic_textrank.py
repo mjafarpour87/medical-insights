@@ -61,7 +61,7 @@ def extract_topic_abstract(article: Article):
 
 def go_extract_topic(proccess_bar=True):
     max_refresh_point = SETTINGS.AAA_CLI_ALERT_POINT
-    l_id = persist.get_article_id_list_by_cstate(0, "FlagExtractTopic")
+    l_id = persist.get_article_id_list_by_state(2)
     total_article_in_current_state = len(l_id)
     n = 0
     logger.DEBUG(str(len(l_id)) + " Article(s) is in FlagExtractTopic " + str(0))

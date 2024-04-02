@@ -140,6 +140,9 @@ class CoCalculator:
             for j in range(i+1, len(topics)):
                 self.topics_co_occurrence_matrix[(topics[i], topics[j])] += 1
 
+
+
+
     def _co_occurring_keywords(self, keywords):
         for i in range(len(keywords)):
             for j in range(i+1, len(keywords)):
@@ -167,6 +170,7 @@ class CoCalculator:
             # analyze the co-occurring topics
             a['new_topics'] = self._normalize_topics(a['topics'])
             self._co_occurring_topics(a['new_topics'])
+
 
 
     def export_vos_viewer_topics_co_occurring(self,

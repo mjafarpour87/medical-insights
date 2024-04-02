@@ -68,7 +68,16 @@ streamlit run web.py --server.port 7186
 ```
 
 ## Run Step to Step
-
+step1
+step2
+step3
+step4
+step10.2
+step10.4
+step11
+step12
+step13
+step14
 
 # Article
 
