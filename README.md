@@ -1,5 +1,5 @@
 # medical-insights
-
+This Repo design for article that submmit in [MIE 2024](https://mie2024.org/)
 
 
 
@@ -71,22 +71,15 @@ streamlit run web.py --server.port 7186
 
 |#     |File Name            |Description|
 |-|-|-|
-|Step 1|step1_check_config.py|Check TripleA Configuration|
-|step 2|step2_get_pubmed.py||
-|Step 3|step3_move_state_forward.py||
-|Step 4|step4_extract_topic_textrank.py|Extract topic from abstract and title with method textrank|
-|Step 5|step5_extract_topic_with_llm.py|Extract topic from abstract and title with LLM|
-|Step 6|step6_repair_response.py|Repair Json format in response of LLM|
-|Step 7|step7_export_dataset.py|Export Dataset|
+|Step 1|step01_check_config.py|Check TripleA Configuration|
+|step 2|step02_get_pubmed.py||
+|Step 3|step03_move_state_forward.py||
+|Step 4|step04_extract_topic_textrank.py|Extract topic from abstract and title with method textrank|
+|Step 5|step05_extract_topic_with_llm.py|Extract topic from abstract and title with LLM|
+|Step 6|step06_repair_response.py|Repair Json format in response of LLM|
+|Step 7|step07_export_dataset.py|Export Dataset|
+|Step 8|step08_generate_co_occurrence_graph.py|Generate Co-occurrence graph and export graphml and vosviewer|
 
-step3
-step4
-step10.2
-step10.4
-step11
-step12
-step13
-step14
 
 
 
@@ -152,9 +145,21 @@ Reciprocity : Can not calculate in undirected graph.
 Graph Diameter : 
 Number of Components : 69
 
+3-7
 
+|Graph Nodes|Graph Edges|Graph Average Degree|Graph Density|Graph Transitivity|Graph Average Clustering Coefficient|Graph Degree Assortativity Coefficient|Graph Radius|Number of Components|
+|-|-|-|-|-|-|-|-|-|
+|180|1869|10.383333333333333|0.11601489757914339|0.33822583239504583|0.6287495176290473|-0.26864279905481586|2|1|
+|1106|23179|20.95750452079566|0.037932134879268165|0.18028782814226374|0.8656427256105894|-0.3634106013533251|1|1|
+|85|441|5.188235294117647|0.12352941176470589|0.35589388001205907|0.5677863710428314|-0.14805472645939238|2|1|
 
+0-7
 
+|Graph Nodes|Graph Edges|Graph Average Degree|Graph Density|Graph Transitivity|Graph Average Clustering Coefficient|Graph Degree Assortativity Coefficient|Graph Radius|Number of Components|
+|-|-|-|-|-|-|-|-|-|
+|45741|356983|7.80444240397018|0.00034125240069830256|0.062251828346278654|0.9051982234160808|-0.06977365378359335|NaN|509|
+|10995|248968|22.643747157798998|0.004119291824231217|0.11401194246943137|0.823940403480553|-0.2240567505762541|NaN|2|
+|37023|270895|7.316938119547308|0.00039527514016246063|0.054351639999606426|0.8842263711703248|-0.07624538974062134|NaN|43|
 
 
 # Article

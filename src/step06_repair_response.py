@@ -1,6 +1,6 @@
 # Sample update response base of JSONDecodeError
 # copy of sample_update_response_jsondecodererror
-# for CardioBioBank1
+
 
 import json
 import time
