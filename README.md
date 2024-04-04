@@ -1,5 +1,5 @@
 # medical-insights
-This Repo design for article that submmit in [MIE 2024](https://mie2024.org/)
+This Repo is designed for the article that is submmitted in [MIE 2024](https://mie2024.org/)
 
 
 
