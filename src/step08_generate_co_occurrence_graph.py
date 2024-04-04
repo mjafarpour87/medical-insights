@@ -1,22 +1,19 @@
 from collections import defaultdict
 import json
 import os
-import pathlib
-from matplotlib import pyplot as plt
 import networkx as nx
 import random
 import click
 from triplea.service.click_logger import logger
 from triplea.config.settings import SETTINGS
 import json
-import pathlib
-
+from triplea.service.graph.analysis.info import info
 import click
 from config import OUTPUT_DIR
 
-
-ROOT = pathlib.Path(__file__).resolve().parent.parent
-
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
 
 #region Basic Table
 _topic_normalize_data = [
@@ -55,7 +52,7 @@ llm_topics_co_occurrence_matrix = defaultdict(int)
 keyword_co_occurrence_matrix = defaultdict(int)
 textrank_topics_co_occurrence_matrix = defaultdict(int)
 
-with open(ROOT / "output" / "dataset.json" ) as json_file:
+with open(OUTPUT_DIR / "dataset.json" ) as json_file:
     data = json.load(json_file)
 
 def _emmanuel(d: list) -> list:
@@ -83,27 +80,6 @@ def _co_occurring_topics(topics):
     for i in range(len(topics)):
         for j in range(i+1, len(topics)):
             textrank_topics_co_occurrence_matrix[(topics[i], topics[j])] += 1
-
-def _normalize_llm_topics(self,topics):
-    new_topics = []
-    topics = list(dict.fromkeys(topics))
-    for t in topics:
-        t = str.lower(t)
-        # # If you can split
-        # ts = str.split(t," ")
-        # for topic in ts: # Delete like '='
-        #     if len(topic) < 4:
-        #         pass
-        #     else:
-        #         new_topics.append(topic)
-
-        # for total
-        if len(t) < 2:
-            pass
-        else:
-            new_topics.append(t)
-
-    return _emmanuel(new_topics)
 
 
 def _correct_topic_list(topics):
@@ -189,74 +165,27 @@ def graph2vos(G):
     }
     }
     return graph_data
-    
-# def export_vos_viewer_llm_topics_co_occurring(
-#                                             filename:str,
-#                                             link_weight_limit = 0,
-#                                             degree_limit= 0 ):
-#     G = nx.Graph()
-#     # Add nodes and edges based on co-occurrence matrix
-#     for pair, count in llm_topics_co_occurrence_matrix.items():
-#         keyword1, keyword2 = pair
-#         if c._topic_in_blacklist(keyword1) or c._topic_in_blacklist(keyword2):
-#             pass
-#         else:
-#             # keyword1 = self._normalize_topic(keyword1)
-#             # keyword2 = self._normalize_topic(keyword2)
-#             if link_weight_limit == 0: # unlimited
-#                 G.add_edge(keyword1, keyword2, weight=count)
-#             else:
-#                 if  count > link_weight_limit:  
-#                     G.add_edge(keyword1, keyword2, weight=count)
 
-#     print(G.number_of_nodes())
-#     # Remove nodes with degree less than 10
-#     nodes_to_remove = [node for node, degree in dict(G.degree()).items() if degree < degree_limit]
-#     G.remove_nodes_from(nodes_to_remove)
 
-#     print(G.number_of_nodes())
-#     graph_data = {
-#     "network": {
-#         "items": [{"id": node,
-#                     "label": node,
-#                     "x": round(random.uniform(-1.1515,0.200),4),
-#                     "y": round(random.uniform(-1.1515,0.200),4)} for node, node_name in G.nodes(data="label")],
-#         "links": [{"source_id": source, "target_id": target, "strength": data["weight"]} for source, target, data in G.edges(data=True)]
-#     }
-# }
 
-#     # Convert the dictionary to JSON format and save it to a file
-#     with open(os.path.join(OUTPUT_DIR ,filename), 'w') as outfile:
-#         json.dump(graph_data, outfile, indent=4)
+def ecdf(data):
+    return np.sort(data), np.arange(1, len(data) + 1) / len(data)
 
-#     # Draw the graph
-#     # pos = nx.spring_layout(G)  # positions for all nodes
-#     pos = nx.spring_layout(G)
-#     plt.clf()
-#     # nx.draw(G, pos, with_labels=True, node_size=7000, font_size=10, node_color='skyblue', edge_color='gray', width=2, edge_cmap=plt.cm.Blues)
-    
-#     # Adjust figure size to accommodate the graph without overlap
-#     plt.figure(figsize=(15, 16))
-
-#     nx.draw(G,
-#             pos,
-#             with_labels=False,
-#             node_size=4,
-#             # node_color=[G.nodes[n]['color'] for n in G.nodes],
-#             edge_color=[G[u][v]['weight'] for u, v in G.edges])
-#     plt.show()
-#     plt.title("LLM Topics Co-occurrence Graph")
-#     plt.axis("off")
-#     # plt.tight_layout()
-#     plt.savefig(os.path.join(OUTPUT_DIR ,"llm_topics_co_occurrence.png"),bbox_inches='tight')
+def save_degree_distribution_chart(G,filename):
+    plt.clf()
+    x, y = ecdf(pd.Series(dict(nx.degree(G))))
+    plt.scatter(x, y)
+    # plt.plot(x, y)
+    # plt.show()
+    plt.savefig(filename)
 
 if __name__ == "__main__":
-    from triplea.service.graph.analysis.info import info
+    
    
     lwl = 3
     dl = 7
     info_list = []
-    #------------------------------Manual Calcularion of LLM Topics------------
+    
     print("Generate Co-occurring Matrix start...")
     generate_co_occurring_matrix()
     print("Generate Co-occurring Matrix end")
@@ -266,22 +195,34 @@ if __name__ == "__main__":
                  link_weight_limit = lwl,
                  degree_limit= dl)
     print("Generate Co-occurring LLM Topic Graph end.")
-    info_list.append(info(g_llm_topic,"json"))
+    # print("Analysis Co-occurring TextRank Topic Graph start...")
+    # info_list.append(info(g_llm_topic,"json"))
+    # print("Analysis Co-occurring TextRank Topic Graph end.")
+
+    save_degree_distribution_chart(g_llm_topic,"llm.png")
+
 
     print("Generate Co-occurring Keyword Graph start...")
     g_keyword = matrix2graph(keyword_co_occurrence_matrix,
                  link_weight_limit = lwl,
                  degree_limit= dl)
     print("Generate Co-occurring Keyword Graph end.")
-    info_list.append(info(g_keyword,"json"))
+    # print("Analysis Co-occurring Keyword Graph start...")
+    # info_list.append(info(g_keyword,"json"))
+    # print("Analysis Co-occurring Keyword Graph end.")
+
+    save_degree_distribution_chart(g_keyword,"keyword.png")
 
     print("Generate Co-occurring TextRank Topic Graph start...")
     g_textrank_topic = matrix2graph(textrank_topics_co_occurrence_matrix,
                  link_weight_limit = lwl,
                  degree_limit= dl)
     print("Generate Co-occurring TextRank Topic Graph end.")
-    info_list.append(info(g_textrank_topic,"json"))
+    # print("Analysis Co-occurring TextRank Topic Graph start...")
+    # info_list.append(info(g_textrank_topic,"json"))
+    # print("Analysis Co-occurring TextRank Topic Graph end.")
 
+    save_degree_distribution_chart(g_textrank_topic,"textrank.png")
 
     with open(os.path.join(OUTPUT_DIR ,"info.json"), 'w') as outfile:
         json.dump(info_list, outfile, indent=4)
@@ -294,24 +235,22 @@ if __name__ == "__main__":
     # print("Export Graphml format file end.")
         
 
-    # Convert the dictionary to JSON format and save it to a file for VOSviewer
-    dict_g_llm_topic = graph2vos(g_llm_topic)
-    dict_g_keyword = graph2vos(g_keyword)
-    dict_g_textrank_topic = graph2vos(g_textrank_topic)
+    # # Convert the dictionary to JSON format and save it to a file for VOSviewer
+    # print("Generate Co-occurring json file for VSOviewer start...")
+    # dict_g_llm_topic = graph2vos(g_llm_topic)
+    # dict_g_keyword = graph2vos(g_keyword)
+    # dict_g_textrank_topic = graph2vos(g_textrank_topic)
+    # print("Generate Co-occurring json file for VSOviewer end.")
 
-    with open(os.path.join(OUTPUT_DIR ,"vos_topic_llm.json"), 'w') as outfile:
-        json.dump(dict_g_llm_topic, outfile, indent=4)
+    # with open(os.path.join(OUTPUT_DIR ,"vos_topic_llm.json"), 'w') as outfile:
+    #     json.dump(dict_g_llm_topic, outfile, indent=4)
 
-    with open(os.path.join(OUTPUT_DIR ,"vos_keyword.json"), 'w') as outfile:
-        json.dump(dict_g_keyword, outfile, indent=4)
+    # with open(os.path.join(OUTPUT_DIR ,"vos_keyword.json"), 'w') as outfile:
+    #     json.dump(dict_g_keyword, outfile, indent=4)
 
-    with open(os.path.join(OUTPUT_DIR ,"vos_topic_textrank.json"), 'w') as outfile:
-        json.dump(dict_g_textrank_topic, outfile, indent=4)
+    # with open(os.path.join(OUTPUT_DIR ,"vos_topic_textrank.json"), 'w') as outfile:
+    #     json.dump(dict_g_textrank_topic, outfile, indent=4)
 
-
-    # export_vos_viewer_llm_topics_co_occurring("vos_topicllm.json",
-    #                                         degree_limit= 3,
-    #                                         link_weight_limit=7)
     
 
-    #------------------------------Manual Calcularion of LLM Topics------------
+    

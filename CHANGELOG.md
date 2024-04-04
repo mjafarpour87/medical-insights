@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 
 
 ### Improvements
+- Add & Improve `step08_generate_co_occurrence_graph`
 - Change structure And step
 - Add `step11_topic_extract_with_llm`
 - Add VOS Viewer Export

@@ -67,7 +67,7 @@ For run web view of article:
 streamlit run web.py --server.port 7186
 ```
 
-## Run Step to Step
+# Run Step by Step
 
 |#     |File Name            |Description|
 |-|-|-|
@@ -81,7 +81,7 @@ streamlit run web.py --server.port 7186
 |Step 8|step08_generate_co_occurrence_graph.py|Generate Co-occurrence graph and export graphml and vosviewer|
 
 
-
+# Graph Info
 
 |method|Graph Nodes|Graph Edges|Graph Average Degree|Graph Density         |Graph Average Clustering Coefficient|Graph Degree Assortativity Coefficient|Components|
 |------|-----------|-----------|--------------------|----------------------|------------------------------------|--------------------------------------|----------|
@@ -90,60 +90,13 @@ streamlit run web.py --server.port 7186
 |Textrank|41185|288024|6.9934199344421515|0.00033961829518464216|0.8905241147162223|-0.07659374291256468|86|
 
 
+0-0
 
-g_textrank_topic
-Elapsed Time Calculation Report : 34.7201886177063
-Graph Type: Undirected
-Graph Nodes: 41185
-Graph Edges: 288024
-Graph Average Degree : 6.9934199344421515
-Graph Density : 0.00033961829518464216
-Graph Transitivity : 0.050903166471327685
-Graph max path length : NaN
-Graph Average Clustering Coefficient : 0.8905241147162223
-Graph Degree Assortativity Coefficient : -0.07659374291256468
-Graph Radius : NaN Found infinite path length because the graph is not connected
-SCC: Can not calculate in undirected graph.
-WCC: Can not calculate in undirected graph.
-Reciprocity : Can not calculate in undirected graph.
-Graph Diameter : 
-Number of Components : 86
-
-g_llm_topic
-Elapsed Time Calculation Report : 44.90726280212402
-Graph Type: Undirected
-Graph Nodes: 45806
-Graph Edges: 357482
-Graph Average Degree : 7.804261450465004
-Graph Density : 0.00034076024235192684
-Graph Transitivity : 0.062294261111459366
-Graph max path length : NaN
-Graph Average Clustering Coefficient : 0.9052766558811535
-Graph Degree Assortativity Coefficient : -0.06969792652358299
-Graph Radius : NaN Found infinite path length because the graph is not connected
-SCC: Can not calculate in undirected graph.
-WCC: Can not calculate in undirected graph.
-Reciprocity : Can not calculate in undirected graph.
-Graph Diameter : 
-Number of Components : 514
-
-g_keyword
-Elapsed Time Calculation Report : 125.76658606529236
-Graph Type: Undirected
-Graph Nodes: 15555
-Graph Edges: 337659
-Graph Average Degree : 21.707425265188043
-Graph Density : 0.0027912338003327816
-Graph Transitivity : 0.045427854941359314
-Graph max path length : NaN
-Graph Average Clustering Coefficient : 0.8692939688222773
-Graph Degree Assortativity Coefficient : -0.1513162822347413
-Graph Radius : NaN Found infinite path length because the graph is not connected
-SCC: Can not calculate in undirected graph.
-WCC: Can not calculate in undirected graph.
-Reciprocity : Can not calculate in undirected graph.
-Graph Diameter : 
-Number of Components : 69
+|Graph Nodes|Graph Edges|Graph Average Degree|Graph Density|Graph Transitivity|Graph Average Clustering Coefficient|Graph Degree Assortativity Coefficient|Graph Radius|Number of Components|
+|-|-|-|-|-|-|-|-|-|
+|45805|357225|7.798821089400721|0.00034053013227668854|0.062225593356894295|0.9052876260320849|-0.06974728372125498|NaN|514|
+|13512|257502|19.05728241563055|0.0028210025039790616|0.1110493731105105|0.8443954256641666|-0.21809378726182685|NaN|39|
+|41181|287947|6.99222942619169|0.00033959346411810057|0.050900985991725836|0.8905355367079815|-0.07659661402195801|NaN|86|
 
 3-7
 

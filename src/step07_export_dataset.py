@@ -5,12 +5,10 @@ from triplea.service.repository.export.engine import export_engine
 from triplea.service.repository.export.unified_export_json import json_converter_01
 from triplea.service.repository.export.unified_export_json.convert import Converter
 from triplea.utils.general import safe_csv
-import os
-import pathlib
+from config import OUTPUT_DIR
 
 
-
-ROOT = pathlib.Path(__file__).resolve().parent.parent
+# ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 
 def fx_filter(article:Article):
@@ -92,7 +90,7 @@ if __name__ == "__main__":
     print(f"{len(ol)} Articles selected and transform.")
     
     # DATA_FILE = ROOT / "output" / "dataset_llm_topic.json"
-    DATA_FILE = ROOT / "output" / "dataset.json"
+    DATA_FILE = OUTPUT_DIR / "dataset.json"
     with open(DATA_FILE, 'w') as fp:
         json.dump(ol, fp)
 
