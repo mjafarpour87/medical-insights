@@ -1,6 +1,7 @@
 # medical-insights
-This Repo is designed for the article that is submmitted in [MIE 2024](https://mie2024.org/)
+![MIE 2024](https://mie2024.org/wp-content/uploads/2023/11/Logo.png)
 
+This Repo is designed for the article that is submmitted in [MIE 2024](https://mie2024.org/)
 
 
 <br>
@@ -12,6 +13,12 @@ This Repo is designed for the article that is submmitted in [MIE 2024](https://m
 ---
 
 <br>
+
+![Repo Size](https://img.shields.io/github/repo-size/mjafarpour87/medical-insights)
+
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mjafarpour87/medical-insights)
+
+<!-- ![Downloads](https://img.shields.io/github/downloads/mjafarpour87/medical-insights/total) -->
 
 # How to use
 
@@ -60,30 +67,85 @@ pip install git+https://github.com/EhsanBitaraf/triple-a.git
 python -m spacy download en_core_web_sm
 ```
 
-For run web view of article:
+<!-- For run web view of article:
 
 *Windows*
 ```sh
 streamlit run web.py --server.port 7186
-```
+``` -->
 
 # Run Step by Step
 
 |#     |File Name            |Description|
 |-|-|-|
 |Step 1|step01_check_config.py|Check TripleA Configuration|
-|step 2|step02_get_pubmed.py||
-|Step 3|step03_move_state_forward.py||
+|step 2|step02_get_pubmed.py|To retrieve relevant papers with minimum quality content, we used the search strategy keywords: `("Breast Cancer"[Title]) AND (Therapy[Title])`.|
+|Step 3|step03_move_state_forward.py|In this step, "Triple A" operators were used to process paper metadata and content at different states, including extracting keywords and MeSH terms from the metadata.|
 |Step 4|step04_extract_topic_textrank.py|Extract topic from abstract and title with method textrank|
-|Step 5|step05_extract_topic_with_llm.py|Extract topic from abstract and title with LLM|
+|Step 5|step05_extract_topic_with_llm.py|Extract topic from abstract and title with LLM. In this step, a template has been used to extract topics from the abstract of the articles, which you can see [here](https://raw.githubusercontent.com/mjafarpour87/medical-insights/main/src/extract-topic.json). We used the [Mistral-7B-Instruct-v0.2](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2) model for this.|
 |Step 6|step06_repair_response.py|Repair Json format in response of LLM|
 |Step 7|step07_export_dataset.py|Export Dataset|
 |Step 8|step08_generate_co_occurrence_graph.py|Generate Co-occurrence graph and export graphml and vosviewer|
 
+# Dataset
+
+In step 7, a dataset is formed that can be used in the next steps and various studies can be done on it.
+This dataset includes the title of the article, the list of topics extracted using LLM and the topics extracted using the Textrank method, as well as the keywords of the article. In addition, this dataset can be downloaded from [here](https://doi.org/10.6084/m9.figshare.25533532). The format of the dataset is Json.
+
+Below is the format of each article in the dataset as Json:
+
+```json
+{
+        "title": "Review of recent preclinical and clinical research on ligand-targeted liposomes as delivery systems in triple negative breast cancer therapy.",
+        "year": "2024",
+        "pmid": "38520185",
+        "keywords": [
+            "Triple negative breast cancer",
+            "drug carriers",
+            "ligand-targeted liposomes",
+            "liposome"
+        ],
+        "textrank_topics": [
+            "TNBC treatment",
+            "progressed TNBC treatment",
+            "various treatment methods",
+            "targeted treatment",
+            "triple negative breast cancer therapy",
+            "targeted drug carriers",
+            "TNBC",
+            "breast cancer patients",
+            "appropriate treatment",
+            "drug delivery"
+        ],
+        "llm_topics": [
+            "Triple-negative breast cancer (TNBC)",
+            "Chemotherapy",
+            "Targeted treatment",
+            "Liposomes",
+            "Drug delivery",
+            "Ligand-targeted liposomes",
+            "TNBC therapy",
+            "Preclinical research",
+            "Clinical research",
+            "MDR cancer cells"
+        ]
+    },
+
+```
+
+If you use this dataset in another scientific work, you can refer to it as follows:
+
+
+> Bitaraf, Ehsan (2024). Topic Extraction Dataset. figshare. Dataset. https://doi.org/10.6084/m9.figshare.25533532
+
+
+[![DOI:10.6084/m9.figshare.25533532](https://zenodo.org/badge/doi/10.6084/m9.figshare.25533532.svg)](https://doi.org/10.6084/m9.figshare.25533532)
+
+
 
 # Graph Info
 
-|method|Graph Nodes|Graph Edges|Graph Average Degree|Graph Density         |Graph Average Clustering Coefficient|Graph Degree Assortativity Coefficient|Components|
+|Method|Graph Nodes|Graph Edges|Graph Average Degree|Graph Density         |Graph Average Clustering Coefficient|Graph Degree Assortativity Coefficient|Components|
 |------|-----------|-----------|--------------------|----------------------|------------------------------------|--------------------------------------|----------|
 |LLM   |45806      |357482     |7.804261450465004   |0.00034076024235192684|0.9052766558811535                  |-0.06969792652358299|514|
 |Keyword|15555     |337659      |21.707425265188043 |0.0027912338003327816 |0.8692939688222773|-0.1513162822347413|69|
@@ -120,6 +182,12 @@ streamlit run web.py --server.port 7186
 
 # Contributors
 
-[![01 project contributors](https://contrib.rocks/image?repo=OpenInterpreter/01&max=2000)](https://github.com/OpenInterpreter/01/graphs/contributors)
+[![01 project contributors](https://contrib.rocks/image?repo=mjafarpour87/medical-insights&max=2000)](https://github.com/mjafarpour87/medical-insights/graphs/contributors)
 
 Please see our [contributing guidelines](CONTRIBUTING.md) for more details on how to get involved.
+
+---
+
+# License
+
+THis Repository is available under the [MIT License](LICENSE).
