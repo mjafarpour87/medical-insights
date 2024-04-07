@@ -189,7 +189,9 @@ The manuscript is submitted to MIE 2024. Upon Acceptance, further details on how
 
 # Contributors
 
-[![01 project contributors](https://contrib.rocks/image?repo=mjafarpour87/medical-insights&max=2000)](https://github.com/mjafarpour87/medical-insights/graphs/contributors)
+[![01 project contributors](https://contrib.rocks/image?repo=mjafarpour87/medical-insights)](https://github.com/mjafarpour87/medical-insights/graphs/contributors)
+
+Made with [contrib.rocks](https://contrib.rocks).
 
 Please see our [contributing guidelines](CONTRIBUTING.md) for more details on how to get involved.
 
