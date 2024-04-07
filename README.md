@@ -20,6 +20,13 @@ This Repo is designed for the article that is submmitted in [MIE 2024](https://m
 
 <!-- ![Downloads](https://img.shields.io/github/downloads/mjafarpour87/medical-insights/total) -->
 
+# Basic concept
+## Topic Extraction
+Topic Extraction, also known as "automatic topic discovery" or "topic modeling," is a text analysis technique used to identify the main themes or concepts in a collection of documents or a large text body. The goal is to automatically summarize and categorize the content by extracting the most relevant keywords, phrases, or topics, thereby enabling users to better understand and explore the information. Topic extraction algorithms detect patterns and probabilistically determine topics based on the frequency and distribution of words, as well as their co-occurrence in the text. These techniques help in a variety of applications, such as sentiment analysis, content recommendation, and search optimization.
+
+## Co-ocurrence topic map
+A Co-occurrence Topic Map is a visual representation of the relationships between topics, keywords, or concepts based on their co-occurrence within a collection of documents or a large text body. In a Co-occurrence Topic Map, topics that frequently appear together in the text are connected by lines, edges, or proximity, indicating a thematic or semantic relationship between the connected items. The map can be used to explore and analyze the structure and content of a text corpus, identify key themes or trends, and support navigation and knowledge discovery. This type of visualization can provide a comprehensive and intuitive overview of the data, revealing hidden patterns and enabling users to gain insights that might be difficult to discern from the raw text alone.
+
 # How to use
 
 
