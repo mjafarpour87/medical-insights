@@ -158,10 +158,11 @@ If you use this dataset in another scientific work, you can refer to it as follo
 |Keyword|15555     |337659      |21.707425265188043 |0.0027912338003327816 |0.8692939688222773|-0.1513162822347413|69|
 |Textrank|41185|288024|6.9934199344421515|0.00033961829518464216|0.8905241147162223|-0.07659374291256468|86|
 
+A comparison of the constructed topic/keyword co-occurrence networks with metrics
 
-0-0
 
-|Graph Nodes|Graph Edges|Graph Average Degree|Graph Density|Graph Transitivity|Graph Average Clustering Coefficient|Graph Degree Assortativity Coefficient|Graph Radius|Number of Components|
+<!-- 
+ |Graph Nodes|Graph Edges|Graph Average Degree|Graph Density|Graph Transitivity|Graph Average Clustering Coefficient|Graph Degree Assortativity Coefficient|Graph Radius|Number of Components|
 |-|-|-|-|-|-|-|-|-|
 |45805|357225|7.798821089400721|0.00034053013227668854|0.062225593356894295|0.9052876260320849|-0.06974728372125498|NaN|514|
 |13512|257502|19.05728241563055|0.0028210025039790616|0.1110493731105105|0.8443954256641666|-0.21809378726182685|NaN|39|
@@ -182,7 +183,7 @@ If you use this dataset in another scientific work, you can refer to it as follo
 |45741|356983|7.80444240397018|0.00034125240069830256|0.062251828346278654|0.9051982234160808|-0.06977365378359335|NaN|509|
 |10995|248968|22.643747157798998|0.004119291824231217|0.11401194246943137|0.823940403480553|-0.2240567505762541|NaN|2|
 |37023|270895|7.316938119547308|0.00039527514016246063|0.054351639999606426|0.8842263711703248|-0.07624538974062134|NaN|43|
-
+-->
 
 # Article
 The manuscript is submitted to MIE 2024. Upon Acceptance, further details on how to cite will be provided.
