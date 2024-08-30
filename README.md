@@ -1,7 +1,30 @@
 # medical-insights
-![MIE 2024](https://mie2024.org/wp-content/uploads/2023/11/Logo.png)
 
-This Repo is designed for the article that is submmitted in [MIE 2024](https://mie2024.org/)
+This repository accompanies the research paper "Unveiling Medical Insights: Advanced Topic Extraction from Scientific Articles," which explores the use of advanced Natural Language Processing (NLP) techniques for extracting key topics from scientific literature, with a focus on breast cancer research. The work leverages the TextRank algorithm and Large Language Models (LLMs) using the TripleA tool to analyze and extract topics from nearly 10,000 scientific paper abstracts.
+
+## Key Features:
+<ul>
+<li>
+<b>Data Extraction</b>: The repository includes scripts for retrieving and processing scientific paper abstracts using the PubMed API.
+</li>
+<li>
+<b>Topic Extraction</b>: Implements TextRank and an open-source LLM (Mistral) to extract and compare topics from the abstracts.
+</li>
+<li>
+<b>Graph Construction</b>: Generates co-occurrence graphs of extracted topics, enabling visualization and further analysis of relationships between key terms.
+</li>
+<li>
+<b>Visualization</b>: Utilizes VOSviewer for visualizing the co-occurrence graphs, providing insights into trends and patterns within the data.
+</li>
+<li>
+<b>Comparative Analysis</b>: The repository offers a comparative analysis of the performance of TextRank and LLMs in topic extraction, showing that LLMs tend to produce more clustered and interconnected topic networks.
+</li>
+</ul>
+
+## Usage:
+The pipeline is designed for reproducibility, allowing researchers to apply the methodology to other domains or datasets.
+Potential applications include bibliometric analysis, trend identification in research fields, and development of knowledge graphs for clinical decision support.
+The full code, datasets, and documentation are available within this repository to facilitate further research and application in the biomedical field.
 
 
 <br>
