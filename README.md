@@ -186,7 +186,9 @@ A comparison of the constructed topic/keyword co-occurrence networks with metric
 -->
 
 # Article
-The manuscript is submitted to MIE 2024. Upon Acceptance, further details on how to cite will be provided.
+The [Paper](https://pubmed.ncbi.nlm.nih.gov/39176947/) is accepted and published at MIE 2024. To cite this work:
+
+Bitaraf E, Jafarpour M, Shool S, Saboori Amleshi R. Unveiling Medical Insights: Advanced Topic Extraction from Scientific Articles. Stud Health Technol Inform. 2024 Aug 22;316:944-948. doi: 10.3233/SHTI240566. PMID: 39176947.
 
 # Contributors
 
