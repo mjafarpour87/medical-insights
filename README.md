@@ -1,4 +1,4 @@
-# medical-insights
+# Unveiling Medical Insights: Advanced Topic Extraction from Scientific Articles
 
 This repository accompanies the research paper "Unveiling Medical Insights: Advanced Topic Extraction from Scientific Articles," which explores the use of advanced Natural Language Processing (NLP) techniques for extracting key topics from scientific literature, with a focus on breast cancer research. The work leverages the TextRank algorithm and Large Language Models (LLMs) using the TripleA tool to analyze and extract topics from nearly 10,000 scientific paper abstracts.
 
@@ -37,11 +37,17 @@ The full code, datasets, and documentation are available within this repository 
 
 <br>
 
+[![commits](https://badgen.net/github/commits/mjafarpour87/medical-insights/main)](https://github.com/mjafarpour87/medical-insights/commits/main?icon=github&color=green)
+[![GitHub Last commit](https://img.shields.io/github/last-commit/mjafarpour87/medical-insights)](https://github.com/mjafarpour87/medical-insights/main)
+![Open Issue](https://img.shields.io/github/issues-raw/mjafarpour87/medical-insights)
+
 ![Repo Size](https://img.shields.io/github/repo-size/mjafarpour87/medical-insights)
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mjafarpour87/medical-insights)
 
-<!-- ![Downloads](https://img.shields.io/github/downloads/mjafarpour87/medical-insights/total) -->
+
+
+![Code Quality](https://github.com/mjafarpour87/medical-insights/actions/workflows/python-flake.yml/badge.svg)
 
 # Basic concept
 ## Topic Extraction
@@ -51,7 +57,8 @@ Topic Extraction, also known as "automatic topic discovery" or "topic modeling,"
 A Co-occurrence Topic Map is a visual representation of the relationships between topics, keywords, or concepts based on their co-occurrence within a collection of documents or a large text body. In a Co-occurrence Topic Map, topics that frequently appear together in the text are connected by lines, edges, or proximity, indicating a thematic or semantic relationship between the connected items. The map can be used to explore and analyze the structure and content of a text corpus, identify key themes or trends, and support navigation and knowledge discovery. This type of visualization can provide a comprehensive and intuitive overview of the data, revealing hidden patterns and enabling users to gain insights that might be difficult to discern from the raw text alone.
 
 # How to use
-
+If you want to use the outputs of this program and [this article](#article), you can use its dataset and perform other methods or other research on its data. [GraphMl files](#graphml-files) have been prepared for different co-occurrence graphs that you can use.
+But if you want to start this program to generate a new dataset and get the outputs you want, you have to go through the pipeline steps completely. We have used [TripleA library](https://github.com/EhsanBitaraf/triple-a) in this program. We have explained this in the "[Install from source](#install-from-source)" section.
 
 ## Install from source
 
@@ -66,12 +73,12 @@ or
 git clone git@github.com:mjafarpour87/medical-insights.git
 ```
 
-Create environment variable:
+Create virtual environment:
 ```shell
 python -m venv venv
 ```
 
-Activate environment variable:
+Activate virtual environment:
 
 *Windows*
 ```sh
@@ -83,7 +90,7 @@ $ .\venv\Scripts\activate
 $ source venv/bin/activate
 ```
 
-
+Install requirements:
 ```sh
 pip install -r requirements.txt
 ```
@@ -104,7 +111,7 @@ python -m spacy download en_core_web_sm
 streamlit run web.py --server.port 7186
 ``` -->
 
-# Run Step by Step
+## Run Step by Step
 
 |#     |File Name            |Description|
 |-|-|-|
@@ -115,7 +122,7 @@ streamlit run web.py --server.port 7186
 |Step 5|step05_extract_topic_with_llm.py|Extract topic from abstract and title with LLM. In this step, a template has been used to extract topics from the abstract of the articles, which you can see [here](https://raw.githubusercontent.com/mjafarpour87/medical-insights/main/src/extract-topic.json). We used the [Mistral-7B-Instruct-v0.2](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2) model for this.|
 |Step 6|step06_repair_response.py|Repair Json format in response of LLM|
 |Step 7|step07_export_dataset.py|Export Dataset|
-|Step 8|step08_generate_co_occurrence_graph.py|Generate Co-occurrence graph and export graphml and vosviewer|
+|Step 8|step08_generate_co_occurrence_graph.py|Generate Co-occurrence graph and export GraphMl and [VOSviewer](https://www.vosviewer.com/)|
 
 # Dataset
 
@@ -171,6 +178,13 @@ If you use this dataset in another scientific work, you can refer to it as follo
 
 [![DOI:10.6084/m9.figshare.25533532](https://zenodo.org/badge/doi/10.6084/m9.figshare.25533532.svg)](https://doi.org/10.6084/m9.figshare.25533532)
 
+# GraphMl Files
+The output in [**GraphMl** format](http://graphml.graphdrawing.org/) has been extracted for all three co-occurrence graphs:
+
+- Co-occurrence topic graphs (Topic Extraction with LLM) [GraphMl file](/output/llm_topic.grapml)
+- Co-occurrence topic graphs (Topic Extraction with TextRank) [GraphMl file](/output/textrank_topic.grapml)
+- Co-occurrence keyword graphs [GraphMl file](/output/keyword.grapml)
+
 
 
 # Graph Info
@@ -181,7 +195,7 @@ If you use this dataset in another scientific work, you can refer to it as follo
 |Keyword|15555     |337659      |21.707425265188043 |0.0027912338003327816 |0.8692939688222773|-0.1513162822347413|69|
 |Textrank|41185|288024|6.9934199344421515|0.00033961829518464216|0.8905241147162223|-0.07659374291256468|86|
 
-A comparison of the constructed topic/keyword co-occurrence networks with metrics
+A comparison of the constructed topic/keyword co-occurrence networks with metrics.
 
 
 <!-- 
@@ -208,6 +222,19 @@ A comparison of the constructed topic/keyword co-occurrence networks with metric
 |37023|270895|7.316938119547308|0.00039527514016246063|0.054351639999606426|0.8842263711703248|-0.07624538974062134|NaN|43|
 -->
 
+Topic Co-occurrence network using TextRank Algorithm
+
+![Topic Co-occurrence network using TextRank Algorithm](/assets/img/vos/fig1.png)
+
+Topic Co-occurrence network using LLM
+
+![Topic Co-occurrence network using LLM](/assets/img/vos/fig2.png)
+
+Keyword co-occurrence network
+
+![Keyword co-occurrence network](/assets/img/vos/fig3.png)
+
+
 # Article
 The [Paper](https://pubmed.ncbi.nlm.nih.gov/39176947/) is accepted and published at MIE 2024. To cite this work:
 
@@ -225,4 +252,4 @@ Please see our [contributing guidelines](CONTRIBUTING.md) for more details on ho
 
 # License
 
-THis Repository is available under the [MIT License](LICENSE).
+This Repository is available under the [MIT License](LICENSE).

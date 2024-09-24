@@ -1,0 +1,64 @@
+cff-version: 1.2.0
+title: >-
+  Unveiling Medical Insights: Advanced Topic Extraction from
+  Scientific Articles
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Ehsan
+    family-names: Bitaraf
+    affiliation: >-
+      Rajaie Cardiovascular Medical and Research Center,
+      Iran University of Medical Sciences, Tehran, Iran
+    orcid: 'https://orcid.org/0000-0002-6588-7349'
+  - given-names: Maryam
+    family-names: Jafarpour
+    affiliation: >-
+      Center for Medical Data Science, Medical University of
+      Vienna, Vienna, Austria
+    orcid: 'https://orcid.org/0000-0001-7266-5018'
+  - given-names: Sina
+    family-names: Shool
+    affiliation: >-
+      Rajaie Cardiovascular Medical and Research Center,
+      Iran University of Medical Sciences, Tehran, Iran
+    orcid: 'https://orcid.org/0000-0002-0280-3187'
+  - given-names: Reza
+    family-names: 'Saboori Amleshi '
+    affiliation: >-
+      Rajaie Cardiovascular Medical and Research Center,
+      Iran University of Medical Sciences, Tehran, Iran
+    orcid: 'https://orcid.org/0000-0002-0299-5027'
+identifiers:
+  - type: doi
+    value: 10.6084/m9.figshare.25533532
+    description: 'dataset '
+  - type: url
+    value: 'https://pubmed.ncbi.nlm.nih.gov/39176947/'
+    description: Article
+repository-code: 'https://github.com/mjafarpour87/medical-insights'
+abstract: >-
+  In the ever-evolving landscape of medical research and
+  healthcare, the abundance of scientific articles presents
+  both a treasure trove of knowledge and a daunting
+  challenge. Researchers, clinicians, and data scientists
+  grapple with vast amounts of unstructured information,
+  seeking to extract meaningful insights that can drive
+  advancements in the biomedical domain including, research
+  trends, patient care, drug discovery, and disease
+  understanding. This paper utilizes the topic extraction
+  algorithms on Breast Cancer Research to shed light on the
+  current trends and the path to follow in this field. We
+  utilized TextRank and Large Language Models (LLM) using
+  the TripleA tool to extract topics in the field, analyzing
+  and comparing the results.
+keywords:
+  - Topic Extraction
+  - Natural Language Processing
+  - Large Language Models
+  - Text Rank
+  - Bibliometric Analysis
+  - Breast Cancer
+license: MIT

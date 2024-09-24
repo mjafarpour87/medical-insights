@@ -24,14 +24,12 @@ def extract_textrank(text: str):
     """
     doc = nlp(text)
 
-
     l_phrase = []
     for phrase in doc._.phrases[:10]:
         row = {"text": phrase.text, "rank": phrase.rank}
         l_phrase.append(row)
 
     return l_phrase
-
 
 
 def extract_topic_abstract(article: Article):
@@ -58,16 +56,19 @@ def extract_topic_abstract(article: Article):
     return article
 
 
-
 def go_extract_topic(proccess_bar=True):
     max_refresh_point = SETTINGS.AAA_CLI_ALERT_POINT
     l_id = persist.get_article_id_list_by_state(2)
     total_article_in_current_state = len(l_id)
     n = 0
-    logger.DEBUG(str(len(l_id)) + " Article(s) is in FlagExtractTopic " + str(0))
+    logger.DEBUG(str(
+            len(l_id)
+        ) + " Article(s) is in FlagExtractTopic " + str(0))
 
     if proccess_bar:
-        bar = click.progressbar(length=len(l_id), show_pos=True, show_percent=True)
+        bar = click.progressbar(length=len(l_id),
+                                show_pos=True,
+                                show_percent=True)
 
     refresh_point = 0
 
@@ -82,11 +83,15 @@ def go_extract_topic(proccess_bar=True):
                 if proccess_bar:
                     print()
                     logger.INFO(
-                        f"There are {str(total_article_in_current_state - n)} article(s) left ",  # noqa: E501
+                        f"""There are {str(
+                            total_article_in_current_state - n
+                            )} article(s) left """,
                         forecolore="yellow",
                     )
                 if proccess_bar is False:
-                    bar.label = f"There are {str(total_article_in_current_state - n)} article(s) left "  # noqa: E501
+                    bar.label = f"""There are {str(
+                        total_article_in_current_state - n
+                        )} article(s) left """
                     bar.update(max_refresh_point)
             else:
                 refresh_point = refresh_point + 1
@@ -133,6 +138,7 @@ def go_extract_topic(proccess_bar=True):
                 persist.refresh()
                 print_error()
     persist.refresh()
+
 
 if __name__ == "__main__":
     go_extract_topic()
