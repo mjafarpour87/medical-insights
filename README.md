@@ -2,7 +2,37 @@
 
 This repository accompanies the research paper "Unveiling Medical Insights: Advanced Topic Extraction from Scientific Articles," which explores the use of advanced Natural Language Processing (NLP) techniques for extracting key topics from scientific literature, with a focus on breast cancer research. The work leverages the TextRank algorithm and Large Language Models (LLMs) using the TripleA tool to analyze and extract topics from nearly 10,000 scientific paper abstracts.
 
-## Key Features:
+[![commits](https://badgen.net/github/commits/mjafarpour87/medical-insights/main)](https://github.com/mjafarpour87/medical-insights/commits/main?icon=github&color=green)
+[![GitHub Last commit](https://img.shields.io/github/last-commit/mjafarpour87/medical-insights)](https://github.com/mjafarpour87/medical-insights/main)
+![Open Issue](https://img.shields.io/github/issues-raw/mjafarpour87/medical-insights)
+
+![Repo Size](https://img.shields.io/github/repo-size/mjafarpour87/medical-insights)
+
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mjafarpour87/medical-insights)
+
+![Code Quality](https://github.com/mjafarpour87/medical-insights/actions/workflows/python-flake.yml/badge.svg)
+
+
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+
+- [Key Features:](#key-features)
+- [Usage](#usage)
+- [Basic concept](#basic-concept)
+   * [Topic Extraction](#topic-extraction)
+   * [Co-ocurrence topic map](#co-ocurrence-topic-map)
+- [How to use](#how-to-use)
+   * [Install from source](#install-from-source)
+   * [Run Step by Step](#run-step-by-step)
+- [Dataset](#dataset)
+- [GraphMl Files](#graphml-files)
+- [Graph Info](#graph-info)
+- [Article](#article)
+- [Contributors](#contributors)
+- [License](#license)
+
+<!-- TOC end -->
+
+# Key Features:
 <ul>
 <li>
 <b>Data Extraction</b>: The repository includes scripts for retrieving and processing scientific paper abstracts using the PubMed API.
@@ -21,33 +51,17 @@ This repository accompanies the research paper "Unveiling Medical Insights: Adva
 </li>
 </ul>
 
-## Usage:
+# Usage
 The pipeline is designed for reproducibility, allowing researchers to apply the methodology to other domains or datasets.
 Potential applications include bibliometric analysis, trend identification in research fields, and development of knowledge graphs for clinical decision support.
 The full code, datasets, and documentation are available within this repository to facilitate further research and application in the biomedical field.
 
 
-<br>
-
----
-
-⚠️ **WARNING:** This experimental project is under rapid development and lacks basic safeguards. Until a stable `1.0` release, **ONLY** run this repository on devices without sensitive information or access to paid services. ⚠️
-
----
-
-<br>
-
-[![commits](https://badgen.net/github/commits/mjafarpour87/medical-insights/main)](https://github.com/mjafarpour87/medical-insights/commits/main?icon=github&color=green)
-[![GitHub Last commit](https://img.shields.io/github/last-commit/mjafarpour87/medical-insights)](https://github.com/mjafarpour87/medical-insights/main)
-![Open Issue](https://img.shields.io/github/issues-raw/mjafarpour87/medical-insights)
-
-![Repo Size](https://img.shields.io/github/repo-size/mjafarpour87/medical-insights)
-
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/mjafarpour87/medical-insights)
 
 
 
-![Code Quality](https://github.com/mjafarpour87/medical-insights/actions/workflows/python-flake.yml/badge.svg)
+
+
 
 # Basic concept
 ## Topic Extraction

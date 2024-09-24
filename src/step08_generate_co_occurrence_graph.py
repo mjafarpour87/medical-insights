@@ -164,7 +164,9 @@ def graph2vos(G):
                 for node, node_name in G.nodes(data="label")
             ],
             "links": [
-                {"source_id": source, "target_id": target, "strength": data["weight"]}
+                {"source_id": source,
+                 "target_id": target,
+                 "strength": data["weight"]}
                 for source, target, data in G.edges(data=True)
             ],
         }
